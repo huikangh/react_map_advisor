@@ -1,12 +1,25 @@
 import React from "react"
 import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from "@material-ui/core"
 import useStyles from "./styles"
+import PlaceDetails from "../PlaceDetails/PlaceDetails"
 
 export default function List() {
 
     const classes = useStyles()
     const [type, setType] = React.useState('restaurants')
     const [rating, setRating] = React.useState('')
+
+    const places = [
+        { name: "Cool Place" },
+        { name: "Best Steak" },
+        { name: "Best Beer" },
+        { name: "Cool Place" },
+        { name: "Best Steak" },
+        { name: "Best Beer" },
+        { name: "Cool Place" },
+        { name: "Best Steak" },
+        { name: "Best Beer" }
+    ]
 
     return (
         <div className={classes.container}>
@@ -30,6 +43,13 @@ export default function List() {
                     <MenuItem value="4.5">Above 4.5</MenuItem>
                 </Select>
             </FormControl>
+            <Grid container spacing={3} className={classes.list}>
+                {places?.map((place, i) => (
+                    <Grid item key={i} xs={12}>
+                        <PlaceDetails place={place}/>
+                    </Grid>
+                ))}
+            </Grid>
         </div>
     )
 }
