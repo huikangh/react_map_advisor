@@ -3,23 +3,12 @@ import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, 
 import useStyles from "./styles"
 import PlaceDetails from "../PlaceDetails/PlaceDetails"
 
-export default function List() {
+export default function List({ places }) {
 
     const classes = useStyles()
     const [type, setType] = React.useState('restaurants')
     const [rating, setRating] = React.useState('')
 
-    const places = [
-        { name: "Cool Place" },
-        { name: "Best Steak" },
-        { name: "Best Beer" },
-        { name: "Cool Place" },
-        { name: "Best Steak" },
-        { name: "Best Beer" },
-        { name: "Cool Place" },
-        { name: "Best Steak" },
-        { name: "Best Beer" }
-    ]
 
     return (
         <div className={classes.container}>
