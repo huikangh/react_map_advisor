@@ -6,8 +6,13 @@ import Rating from "@material-ui/lab/Rating"
 
 import useStyles from "./styles"
 
-export default function PlaceDetails({ place }) {
+export default function PlaceDetails({ place, selected, refProp }) {
     const classes = useStyles()
+
+
+    if (selected) refProp?.current?.scrollIntoView({ behavior:"smooth", block:"start" })
+    // console.log(refProp)
+
 
     return (
         <Card elevation={6}>
@@ -33,19 +38,19 @@ export default function PlaceDetails({ place }) {
                 {place?.awards?.map((award) => (
                     <Box my={1} display="flex" justifyContent="space-between" alignItems="center"> 
                         <img src={award.images.small} alt={award.display_name} />
-                        <Typography variant="subtitle3" color="textSecondary">{award.display_name}</Typography>
+                        <Typography variant="subtitle2" color="textSecondary">{award.display_name}</Typography>
                     </Box>
                 ))}
                 {place?.cuisine?.map(({ name }) => (
                     <Chip key={name} size="small" label={name} className={classes.chip}/>
                 ))}
                 {place?.address &&  (
-                    <Typography gutterBottom variant="subtitle3" color="textSecondary" className={classes.subtitle}>
+                    <Typography gutterBottom variant="subtitle2" color="textSecondary" className={classes.subtitle}>
                         <LocationOnIcon /> {place.address}
                     </Typography>
                 )}
                 {place?.phone &&  (
-                    <Typography gutterBottom variant="subtitle3" color="textSecondary" className={classes.spacing}>
+                    <Typography gutterBottom variant="subtitle2" color="textSecondary" className={classes.spacing}>
                         <PhoneIcon /> {place.phone}
                     </Typography>
                 )}
